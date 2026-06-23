@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Memoria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="tela-inicial">
+        <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/1280px-Pok%C3%A9_Ball_icon.svg.png" alt="Logo do Jogo">
+        <h1>Pokemon</h1>
+        <h2>Memory Game</h2>
+        <h3>Seu nome:</h3>
+        <input type="text" id="input-nome">
+        <button id="btn-iniciar">Teste</button>
+    </div>
+    
+    <div id="hud">
+        <h1 id="hud-nome"></h1>
+        <p id="hud-timer">MM:SS</p>
+        <p id="hud-pares">3 / 10 Pares</p>
+    </div>
+
+    <div id="grid-cartas"></div>
+
+    <div id="tela-final">
+        <p id="tabela-ranking"></p>
+        <p id="pontuacao-final"></p>
+        <p id="tempo-formatado"></p>
+        <button onclick="reiniciarJogo()">Jogar novamente</button>
+        
+    </div>
+
+    
+
+
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
