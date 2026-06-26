@@ -1,4 +1,4 @@
-const DATABASE_URL = "postgresql://neondb_owner:npg_P4eHGzoZrb8C@ep-nameless-thunder-a4uhkv7y-pooler.us-east-1.aws.neon.tech/ETEC_A_2026?sslmode=require";
+const DATABASE_URL = "postgresql://neondb_owner:npg_IHt29UYsPOjR@ep-holy-cake-aitamqs9-pooler.c-4.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require";
 
 const host = new URL(DATABASE_URL).host;
 const neonHttpEndpoint = `https://${host}/sql`;
@@ -32,18 +32,18 @@ async function executarQueryNeon(querySQL, parametros = []) {
 }
 
 
-export async function consultarDiretoComFetch() {
-    console.log("Buscando todos os usuários no banco...");
-    const query = 'SELECT * FROM usuarios';
+export async function buscarLeaderBoard() {
+    console.log("Buscando top 10...");
+    const query = 'SELECT * FROM ranking ORDER BY pontuacao DESC LIMIT 10';
 
     const linhas = await executarQueryNeon(query);
     return linhas || [];
 }
 
-export async function insertUsuario(nome, email, status) {
-    console.log("Cadastrando usuário no banco:", { nome, email, status });
-    const query = 'INSERT INTO usuarios (nome, email, status) VALUES ($1, $2, $3) RETURNING *';
-    const params = [nome, email, status];
+export async function salvarPontuacao(nome_jogador, pontuacao, tempo_segundos) {
+    console.log("Salvando Pontuacao: ", { nome_jogador, pontuacao, tempo_segundos });
+    const query = 'INSERT INTO ranking (nome_jogador, pontuacao, tempo_segundos) VALUES ($1, $2, $3) RETURNING *';
+    const params = [nome_jogador, pontuacao, tempo_segundos];
 
     const linhas = await executarQueryNeon(query, params);
     return linhas !== null;
@@ -66,3 +66,5 @@ export async function sqlDeletarUsuario(id) {
     const linhas = await executarQueryNeon(query, params);
     return linhas !== null;
 }
+
+buscarLeaderBoard();
