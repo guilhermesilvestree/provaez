@@ -21,6 +21,8 @@ const cardAcertados = []
 let carta1 = null
 let carta2 = null
 
+let totalPares = 10
+
 let paresEncontrados = 0
 
 function mostrarToast(tipo, mensagem) {
@@ -35,9 +37,6 @@ function mostrarToast(tipo, mensagem) {
     if (tipo === "info") {
         toast.style.backgroundColor = 'var(--yellow)'
     }
-
-
-
 
     toast.textContent = mensagem;
     toast.style.display = 'block';
@@ -54,7 +53,7 @@ btnReniciar.addEventListener('click', reiniciarJogo)
 async function iniciarJogo() {
     let nome = document.getElementById("input-nome").value
     hudNome.innerHTML = "👤" + nome
-    const pokemons = await buscarPokemondAleatorios(10)
+    const pokemons = await buscarPokemondAleatorios(totalPares)
     renderizarCartas(pokemons)
 }
 
@@ -198,7 +197,20 @@ async function puxarRanking() {
 
 
 function verificarVitoria() {
-   if (paresEncontrados === totalPares) {
+
+    if (paresEncontrados === totalPares) {
+        const nomeJogador = document.getElementById("input-nome").value || "Anônimo";
         
-   }
+        const tempoSegundos = 0; 
+
+        const pontuacaoFinal = paresEncontrados * 100;
+
+        document.getElementById('pontuacao-final').textContent = `${pontuacaoFinal} PTS`;
+        document.getElementById('tempo-formatado').textContent = `Tempo: ${document.getElementById('hud-timer').textContent}`;
+
+        encerrarJogo(nomeJogador, pontuacaoFinal, tempoSegundos);
+        puxarRanking();
+
+        mostrarToast("sucess", "Parabéns! Você encontrou todos os Pokémon!");
+    }
 }
