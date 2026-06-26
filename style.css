@@ -1,5 +1,4 @@
 :root {
-    /* Tons de Slate (Cinza Azulado) */
     --slate-50: #f8fafc;
     --slate-100: #f1f5f9;
     --slate-200: #e2e8f0;
@@ -8,147 +7,93 @@
     --slate-500: #64748b;
     --slate-600: #475569;
     --slate-700: #334155;
-    --slate-800: #1e293b; /* Adicionado para textos escuros */
+    --slate-800: #1e293b;
 
-    /* Tons de Verde (Emerald / Green) */
-    --emerald-100: #d1fae5; /* Adicionado para o fundo da badge ativa */
+    --emerald-100: #d1fae5;
     --emerald-600: #059669;
     --emerald-700: #047857;
-    --green-600: #16a34a; /* Adicionado para toast de sucesso */
+    --green-600: #16a34a;
+    --yellow: #caaf14;
 
-    /* Tons de Azul e Indigo */
     --indigo-500: #6366f1;
     --indigo-600: #4f46e5;
     --indigo-700: #4338ca;
     --indigo-800: #3730a3;
-    --blue-50: #eff6ff;  /* Adicionado para fundo do botão de editar */
-    --blue-600: #2563eb; /* Adicionado para cor do botão de editar e toast info */
+    --blue-50: #eff6ff;
+    --blue-600: #2563eb;
 
-    /* Tons de Vermelho e Rosa */
-    --red-50: #fef2f2;   /* Adicionado para fundo do botão excluir */
+    --red-50: #fef2f2;
     --red-500: #ef4444;
-    --red-600: #dc2626;  /* Adicionado para cor do botão excluir */
-    --rose-100: #ffe4e6; /* Adicionado para fundo da badge inativa */
-    --rose-600: #e11d48; /* Adicionado para toast de erro */
-    --rose-700: #be123c; /* Adicionado para cor do texto da badge inativa */
+    --red-600: #dc2626;
+    --rose-100: #ffe4e6;
+    --rose-600: #e11d48;
+    --rose-700: #be123c;
 
-    /* Neutras e Efeitos */
     --white: #ffffff;
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-#grid-cartas {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 18px;
-    
-    padding: 18px 0 48px;
-}
-
-.card {
-    perspective: 1200px;
-    width: 100%;
-    min-height: 200px;
-}
-
-.card-inner {
-    position: relative;
-    width: 100%;
-    min-height: 200px;
-    border-radius: 22px;
-    transform-style: preserve-3d;
-    transition: transform 0.6s ease;
-    box-shadow: var(--shadow-sm);
-    cursor: pointer;
-}
-
-.card.flipped .card-inner {
-    transform: rotateY(180deg);
-}
-
-.card-face {
-    position: absolute;
-    inset: 0;
-    border-radius: 22px;
-    backface-visibility: hidden;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.card-front {
-    background: #ffffff;
-    flex-direction: column;
-    padding: 16px;
-    gap: 12px;
-}
-
-.card-front img {
-    width: 100%;
-    height: 140px;
-    object-fit: contain;
-}
-
-.card-front .pokemon-nome {
-    text-transform: capitalize;
-    font-weight: 700;
-    color: var(--slate-900);
-}
-
-.card-back {
-    background: #1d4ed8;
-    color: var(--white);
-    transform: rotateY(180deg);
-    font-size: 3rem;
-    font-weight: 800;
-}
-
-.card-back::before {
-    content: "";
-}
-
-.card {
-    display: flex;
-}
-
-.logo {
-    height: 75px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    
-}
-
-h1 {
-    text-align: center;
-    color: #ffd500;
-}
-
-p {
-    color:  #ffd500;
-}
-
-#tela-inicial {
-    background-color: #1e293b;
-    border-radius: 10px;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 body {
     display: flex;
-    width: 100%;
-    height: 100%;
-    
-    /* min-height: 100vh;
-    min-width: 100vw; */
+    width: 100vw;
+    height: 100vh;
 }
+
+#jogo {
+    display: grid;
+    grid-template-columns: 1fr 2.2fr 1fr;
+    gap: 24px;
+    align-items: start;
+    width: 100vw;
+    height: 100vh;
+    padding: 36px;
+}
+
+#tela-inicial,
+.container-jogo,
+#tela-final {
+    background-color: #1e293b;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: var(--shadow-sm);
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#tela-inicial {
+    border-radius: 10px;
+}
+
+#tela-final {
+     background-color: #1e293b;
+}
+
+.logo {
+    height: 95px;
+    width: 100px;
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     overflow: hidden;
+}
+
+h1 {
+    text-align: center;
+    color: #ffd500;
+    font-size: 18px;
+}
+
 h2 {
     text-align: center;
     color: #64748b;
@@ -156,8 +101,121 @@ h2 {
 
 h3 {
     color: #475569;
-    
 }
-#tela-final{
-     background-color: #1e293b
+
+p {
+    color: #ffd500;
+}
+
+#hud {
+    display: flex;
+    justify-content: space-between;
+    font-family: sans-serif;
+}
+
+#btn-iniciar {
+    background-color: #059669;
+    border-radius: 5px;
+    height: 30px;
+    width: 200px;
+    color: white;
+    margin: auto;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+#grid-cartas {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: minmax(70px, 1fr);
+    gap: 12px;
+    padding: 12px;
+    width: 100%;
+    height: 80%;
+    flex: 1;
+}
+
+.card {
+    perspective: 1000px;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 14px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.card.card-virada .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.card-front {
+    background: #ffffff;
+    transform: rotateY(180deg);
+    padding: 12px;
+    gap: 8px;
+}
+
+.card-front img {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.card-front .pokemon-nome {
+    font-weight: 700;
+    color: var(--slate-800);
+}
+
+.card-back {
+    background-color: #0f172a;
+    color: var(--white);
+    transform: rotateY(0deg);
+}
+
+.card.card-acertada {
+    pointer-events: none;
+    opacity: 0.85;
+}
+
+.card.card-acertada .card-inner {
+    border: 3px solid var(--emerald-600);
+    border-radius: 14px;
+}
+
+#toast {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 9999;
+    background-color: var(--green-600); 
+    color: var(--white); 
+    font-size: 16px;
+    padding: 12px 24px;
+    font-family: Arial, sans-serif;
+    border-radius: 8px;
 }
